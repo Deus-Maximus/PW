@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Password Entry</title>
+    <title>Centered Text</title>
     <style>
         /* Set the background color of the body to black */
         body {
             background-color: black;
+            margin: 0;
+            padding: 0;
         }
         
-        /* Create a container to center the content */
+        /* Center the text vertically and horizontally */
         .container {
             display: flex;
             justify-content: center;
@@ -16,61 +18,19 @@
             height: 100vh;
         }
         
-        /* Style the password box */
-        .password-box {
-            background-color: #000; /* Set the background color of the password box to black */
+        /* Style the text */
+        .text {
             color: lime; /* Set the text color to lime */
             font-family: monospace; /* Use a monospace font */
-            padding: 20px; /* Add padding around the password box */
-            text-align: center; /* Center the content horizontally */
-            display: inline-block; /* Display the password box as an inline block */
-        }
-        
-        /* Style the password input field */
-        .password-input {
-            background-color: black; /* Set the background color of the input field to black */
-            color: lime; /* Set the text color to lime */
-            border: none; /* Remove the border */
-            padding: 5px; /* Add padding to the input field */
-            width: 150px; /* Set a fixed width for the input field */
-            font-family: monospace; /* Use a monospace font */
-            caret-color: lime; /* Set the caret color to lime */
-            outline: none; /* Remove the focus outline */
-        }
-        
-        /* Style the input label */
-        .input-label {
-            margin-bottom: 10px; /* Add bottom margin to the input label */
-        }
-        
-        /* Style the brackets */
-        .brackets {
-            color: lime; /* Set the text color to lime */
+            font-size: 12px; /* Set the font size */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="password-box">
-            <div class="input-label">You cracked the code</div>
+        <div class="text">
+            This is centered text.
         </div>
     </div>
-
-    <script>
-        var codeInput = document.getElementById('code-input');
-        
-        codeInput.addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                var enteredCode = codeInput.value;
-                var correctCode = '1234';
-                
-                if (enteredCode === correctCode) {
-                    window.location.href = "success.html";
-                } else {
-                    codeInput.value = '';
-                }
-            }
-        });
-    </script>
 </body>
 </html>
