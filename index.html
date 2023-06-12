@@ -2,14 +2,13 @@
 <html>
 <head>
     <title>Password Entry</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         /* Set the background color of the body to black */
         body {
             background-color: black;
         }
         
-        /* Create a container to center the content */
+        /* Create a container to center the password box */
         .container {
             display: flex;
             justify-content: center;
@@ -24,8 +23,8 @@
             font-family: monospace; /* Use a monospace font */
             padding: 20px; /* Add padding around the password box */
             text-align: center; /* Center the content horizontally */
-            max-width: 300px; /* Set a maximum width for the password box */
-            width: 80%; /* Set the width to occupy 80% of the parent container */
+            display: flex; /* Use flexbox to center the input vertically */
+            align-items: center;
         }
         
         /* Style the password input field */
@@ -34,52 +33,52 @@
             color: lime; /* Set the text color to lime */
             border: none; /* Remove the border */
             padding: 5px; /* Add padding to the input field */
-            width: 100%; /* Set the width to 100% of the parent container */
+            width: 150px; /* Set a fixed width for the input field */
             font-family: monospace; /* Use a monospace font */
             caret-color: lime; /* Set the caret color to lime */
             outline: none; /* Remove the focus outline */
         }
         
+        /* Style the input container */
+        .input-container {
+            display: flex; /* Use flexbox to align the input container */
+            align-items: center; /* Center the items vertically */
+            padding: 2px; /* Add padding to the input container */
+        }
+        
         /* Style the input label */
         .input-label {
-            margin-bottom: 10px; /* Add bottom margin to the input label */
+            margin-right: 10px; /* Add right margin to the input label */
         }
         
         /* Style the brackets */
         .brackets {
             color: lime; /* Set the text color to lime */
         }
-        
-        /* Media query for mobile devices */
-        @media only screen and (max-width: 600px) {
-            .password-box {
-                max-width: 80%; /* Adjust the maximum width to occupy 80% of the screen */
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="password-box">
-            <div class="input-label brackets">[</div>
-            <div class="input-label">Enter Code</div>
-            <input type="text" id="code-input" class="password-input">
-            <div class="input-label brackets">]</div>
+            <div class="input-container">
+                <div class="input-label">Enter Password</div>
+                [<input type="password" id="password-input" class="password-input">]
+            </div>
         </div>
     </div>
 
     <script>
-        var codeInput = document.getElementById('code-input');
+        var passwordInput = document.getElementById('password-input');
         
-        codeInput.addEventListener('keyup', function(event) {
+        passwordInput.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
-                var enteredCode = codeInput.value;
-                var correctCode = '1234';
+                var enteredPassword = passwordInput.value;
+                var correctPassword = '1234';
                 
-                if (enteredCode === correctCode) {
+                if (enteredPassword === correctPassword) {
                     window.location.href = "Enter";
                 } else {
-                    codeInput.value = '';
+                    passwordInput.value = '';
                 }
             }
         });
