@@ -8,7 +8,7 @@
             background-color: black;
         }
         
-        /* Create a container to center the content */
+        /* Create a container to center the password box */
         .container {
             display: flex;
             justify-content: center;
@@ -23,7 +23,11 @@
             font-family: monospace; /* Use a monospace font */
             padding: 20px; /* Add padding around the password box */
             text-align: center; /* Center the content horizontally */
-            display: inline-block; /* Display the password box as an inline block */
+            display: flex; /* Use flexbox to center the input vertically */
+            align-items: center;
+            flex-direction: column; /* Align child elements vertically */
+            max-width: 500px; /* Set a maximum width for the password box */
+            width: 80%; /* Set a moderate width for the password box */
         }
         
         /* Style the password input field */
@@ -38,9 +42,16 @@
             outline: none; /* Remove the focus outline */
         }
         
+        /* Style the input container */
+        .input-container {
+            display: flex; /* Use flexbox to align the input container */
+            align-items: center; /* Center the items vertically */
+            padding: 2px; /* Add padding to the input container */
+        }
+        
         /* Style the input label */
         .input-label {
-            margin-bottom: 10px; /* Add bottom margin to the input label */
+            margin-right: 10px; /* Add right margin to the input label */
         }
         
         /* Style the brackets */
@@ -52,23 +63,25 @@
 <body>
     <div class="container">
         <div class="password-box">
-            <div class="input-label">You cracked the code</div>
-            <input type="text" id="code-input" class="password-input">
+            <div class="input-label">Enter Password</div>
+            <div class="input-container">
+                [<input type="password" id="password-input" class="password-input">]
+            </div>
         </div>
     </div>
 
     <script>
-        var codeInput = document.getElementById('code-input');
+        var passwordInput = document.getElementById('password-input');
         
-        codeInput.addEventListener('keyup', function(event) {
+        passwordInput.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
-                var enteredCode = codeInput.value;
-                var correctCode = '1234';
+                var enteredPassword = passwordInput.value;
+                var correctPassword = '1234';
                 
-                if (enteredCode === correctCode) {
-                    window.location.href = "success.html";
+                if (enteredPassword === correctPassword) {
+                    window.location.href = "Enter";
                 } else {
-                    codeInput.value = '';
+                    passwordInput.value = '';
                 }
             }
         });
