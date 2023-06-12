@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Entry</title>
+    <style>
+        /* Set the background color of the body to black */
+        body {
+            background-color: black;
+        }
+        
+        /* Create a container to center the password box */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Style the password box */
+        .password-box {
+            background-color: #000; /* Set the background color of the password box to black */
+            color: lime; /* Set the text color to lime */
+            font-family: monospace; /* Use a monospace font */
+            padding: 20px; /* Add padding around the password box */
+            text-align: center; /* Center the content horizontally */
+            display: flex; /* Use flexbox to center the input vertically */
+            align-items: center;
+        }
+        
+        /* Style the password input field */
+        .password-input {
+            background-color: black; /* Set the background color of the input field to black */
+            color: lime; /* Set the text color to lime */
+            border: none; /* Remove the border */
+            padding: 5px; /* Add padding to the input field */
+            width: 150px; /* Set a fixed width for the input field */
+            font-family: monospace; /* Use a monospace font */
+            caret-color: lime; /* Set the caret color to lime */
+            outline: none; /* Remove the focus outline */
+        }
+        
+        /* Style the input container */
+        .input-container {
+            display: flex; /* Use flexbox to align the input container */
+            align-items: center; /* Center the items vertically */
+            padding: 2px; /* Add padding to the input container */
+        }
+        
+        /* Style the input label */
+        .input-label {
+            margin-right: 10px; /* Add right margin to the input label */
+        }
+        
+        /* Style the brackets */
+        .brackets {
+            color: lime; /* Set the text color to lime */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="password-box">
+            <div class="input-container">
+                <div class="input-label">Enter Password</div>
+                [<input type="password" id="password-input" class="password-input">]
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var passwordInput = document.getElementById('password-input');
+        
+        passwordInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                var enteredPassword = passwordInput.value;
+                var correctPassword = '1234';
+                
+                if (enteredPassword === correctPassword) {
+                    window.location.href = "PW_1.0.html";
+                } else {
+                    passwordInput.value = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
