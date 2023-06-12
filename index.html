@@ -25,6 +25,9 @@
             text-align: center; /* Center the content horizontally */
             display: flex; /* Use flexbox to center the input vertically */
             align-items: center;
+            flex-direction: column; /* Align child elements vertically */
+            max-width: 500px; /* Set a maximum width for the password box */
+            width: 80%; /* Set a moderate width for the password box */
         }
         
         /* Style the password input field */
@@ -60,8 +63,8 @@
 <body>
     <div class="container">
         <div class="password-box">
+            <div class="input-label">Enter Password</div>
             <div class="input-container">
-                <div class="input-label">Enter Password</div>
                 [<input type="password" id="password-input" class="password-input">]
             </div>
         </div>
@@ -76,7 +79,7 @@
                 var correctPassword = '1234';
                 
                 if (enteredPassword === correctPassword) {
-                    window.location.href = "Enter";
+                    window.location.href = "PW_1.0.html";
                 } else {
                     passwordInput.value = '';
                 }
