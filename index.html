@@ -107,6 +107,7 @@
                     setTimeout(function() {
                         passwordBox.style.display = 'flex'; // Show the password box again
                         accessFailed.style.display = 'none'; // Hide the "Access Failed" message after 1 second
+                        passwordInput.focus(); // Set focus on the password input field
                     }, 1000);
                 }
             }
