@@ -58,6 +58,20 @@
         .brackets {
             color: lime; /* Set the text color to lime */
         }
+        
+        /* Style the "Access Failed" page */
+        .access-failed {
+            display: none; /* Hide the element by default */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(0, 0, 0);
+            border: 2px solid red;
+            color: rgb(255, 0, 0);
+            padding: 20px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
@@ -65,23 +79,35 @@
         <div class="password-box">
             <div class="input-label">Enter Password</div>
             <div class="input-container">
-                [<input type="password" id="password-input" class="password-input">]
+                <span class="brackets">[</span><input type="password" id="password-input" class="password-input"><span class="brackets">]</span>
             </div>
         </div>
     </div>
 
+    <div class="access-failed" id="access-failed">
+        Access Failed
+    </div>
+
     <script>
         var passwordInput = document.getElementById('password-input');
-        
+        var passwordBox = document.querySelector('.password-box');
+        var accessFailed = document.getElementById('access-failed');
+
         passwordInput.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
                 var enteredPassword = passwordInput.value;
                 var correctPassword = '1234';
-                
+
                 if (enteredPassword === correctPassword) {
                     window.location.href = "Enter";
                 } else {
                     passwordInput.value = '';
+                    passwordBox.style.display = 'none'; // Hide the password box
+                    accessFailed.style.display = 'block'; // Show the "Access Failed" message
+                    setTimeout(function() {
+                        passwordBox.style.display = 'flex'; // Show the password box again
+                        accessFailed.style.display = 'none'; // Hide the "Access Failed" message after 1 second
+                    }, 1000);
                 }
             }
         });
