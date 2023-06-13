@@ -79,7 +79,7 @@
         <div class="password-box">
             <div class="input-label">Enter Password</div>
             <div class="input-container">
-                <span class="brackets">[</span><input type="password" id="password-input" class="password-input"><span class="brackets">]</span>
+                <span class="brackets">[</span><input type="password" id="password-input" class="password-input" autofocus><span class="brackets">]</span>
             </div>
         </div>
     </div>
@@ -90,7 +90,6 @@
 
     <script>
         var passwordInput = document.getElementById('password-input');
-        var passwordBox = document.querySelector('.password-box');
         var accessFailed = document.getElementById('access-failed');
 
         passwordInput.addEventListener('keyup', function(event) {
@@ -102,11 +101,10 @@
                     window.location.href = "Enter";
                 } else {
                     passwordInput.value = '';
-                    passwordBox.style.display = 'none'; // Hide the password box
                     accessFailed.style.display = 'block'; // Show the "Access Failed" message
                     setTimeout(function() {
-                        passwordBox.style.display = 'flex'; // Show the password box again
                         accessFailed.style.display = 'none'; // Hide the "Access Failed" message after 1 second
+                        passwordInput.focus(); // Set focus on the password input field
                     }, 1000);
                 }
             }
