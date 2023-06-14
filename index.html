@@ -100,39 +100,20 @@
         passwordInput.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
                 var enteredPassword = passwordInput.value;
+                var correctPassword = '1234';
 
-                // Send enteredPassword to the server for validation
-                fetch('validate-password.php', {
-                    method: 'POST',
-                    body: JSON.stringify({ password: enteredPassword }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(function(response) {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Network response was not ok.');
-                    }
-                })
-                .then(function(data) {
-                    if (data.accessGranted) {
-                        window.location.href = "Enter";
-                    } else {
-                        passwordInput.value = '';
-                        passwordBox.style.display = 'none'; // Hide the password box
-                        accessFailed.style.display = 'block'; // Show the "Access Failed" message
-                        setTimeout(function() {
-                            passwordBox.style.display = 'flex'; // Show the password box again
-                            accessFailed.style.display = 'none'; // Hide the "Access Failed" message after 1 second
-                            passwordInput.focus(); // Set focus on the password input field
-                        }, 1000);
-                    }
-                })
-                .catch(function(error) {
-                    console.log('Error:', error);
-                });
+                if (enteredPassword === correctPassword) {
+                    window.location.href = "Enter";
+                } else {
+                    passwordInput.value = '';
+                    passwordBox.style.display = 'none'; // Hide the password box
+                    accessFailed.style.display = 'block'; // Show the "Access Failed" message
+                    setTimeout(function() {
+                        passwordBox.style.display = 'flex'; // Show the password box again
+                        accessFailed.style.display = 'none'; // Hide the "Access Failed" message after 1 second
+                        passwordInput.focus(); // Set focus on the password input field
+                    }, 1000);
+                }
             }
         });
     </script>
